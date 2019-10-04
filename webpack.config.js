@@ -1,6 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const HtmlPlugin = ({template, inject, filename, chunks}) => {
@@ -30,8 +30,8 @@ const HtmlPlugin = ({template, inject, filename, chunks}) => {
 
 module.exports = {
     entry: {
-      background: './src/background.js',
-      popup: './src/popup.js'
+        background: './src/background.js',
+        popup: './src/popup.js'
     },
     output: {
         path: path.resolve(__dirname, 'build'),
@@ -57,8 +57,12 @@ module.exports = {
             filename: 'popup.html',
             chunks: ['popup']
         }),
+        HtmlPlugin({
+            template: 'public/intro.html',
+            filename: 'intro.html'
+        }),
         new CopyWebpackPlugin([
-            { from: 'public/manifest.json'}
+            {from: 'public/manifest.json'}
         ])
     ]
 };
