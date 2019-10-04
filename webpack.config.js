@@ -3,6 +3,31 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
+const HtmlPlugin = ({template, inject, filename, chunks}) => {
+    return (
+        new HtmlWebpackPlugin(
+            {
+                template,
+                inject,
+                filename,
+                chunks,
+                minify: {
+                    removeComments: true,
+                    collapseWhitespace: true,
+                    removeRedundantAttributes: true,
+                    useShortDoctype: true,
+                    removeEmptyAttributes: true,
+                    removeStyleLinkTypeAttributes: true,
+                    keepClosingSlash: true,
+                    minifyJS: true,
+                    minifyCSS: true,
+                    minifyURLs: true
+                }
+            }
+        )
+    )
+}
+
 module.exports = {
     entry: {
       background: './src/background.js',
@@ -26,23 +51,11 @@ module.exports = {
     },
     plugins: [
         new CleanWebpackPlugin(),
-        new HtmlWebpackPlugin({
+        HtmlPlugin({
             template: 'public/popup.html',
             inject: 'body',
             filename: 'popup.html',
-            chunks: ['popup'],
-            minify: {
-                removeComments: true,
-                collapseWhitespace: true,
-                removeRedundantAttributes: true,
-                useShortDoctype: true,
-                removeEmptyAttributes: true,
-                removeStyleLinkTypeAttributes: true,
-                keepClosingSlash: true,
-                minifyJS: true,
-                minifyCSS: true,
-                minifyURLs: true,
-            },
+            chunks: ['popup']
         }),
         new CopyWebpackPlugin([
             { from: 'public/manifest.json'}
