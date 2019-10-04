@@ -1,3 +1,7 @@
+/**
+ * Background script triggers the page action when we detect one of the Amazon stores in the url
+ * https://developer.chrome.com/extensions/background_pages
+ */
 const background = () => {
     chrome.runtime.onInstalled.addListener(function () {
         chrome.declarativeContent.onPageChanged.removeRules(undefined, function () {
@@ -5,9 +9,8 @@ const background = () => {
                 {
                     conditions: [
                         new chrome.declarativeContent.PageStateMatcher({
-                            // look one of the amazon stores in the url
                             pageUrl: {
-                                urlMatches: '.amazon(\.co.uk|\.de|\.it|\.fr|\.es)'
+                                urlMatches: '.amazon.(\co.uk|\de|\it|\fr|\es)'
                             },
                         })
                     ],
