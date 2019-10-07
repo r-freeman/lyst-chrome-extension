@@ -16,7 +16,8 @@
     "https://*/*",
     "activeTab",
     "declarativeContent",
-    "cookies"
+    "storage",
+    "webNavigation"
   ],
   "manifest_version": 2
 }

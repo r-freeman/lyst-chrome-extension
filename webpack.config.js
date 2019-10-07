@@ -31,7 +31,8 @@ const HtmlPlugin = ({template, inject, filename, chunks}) => {
 module.exports = {
     entry: {
         background: './src/background.js',
-        popup: './src/popup.js'
+        popup: './src/popup.js',
+        content: './src/content.js'
     },
     output: {
         path: path.resolve(__dirname, 'build'),
