@@ -1,4 +1,5 @@
-import {parseXPath} from "./parsexpath";
+import {parseXPath} from "./utils/xpath";
+import {numToDecimal} from './utils/numbers'
 
 let asinId = null
 
@@ -17,13 +18,14 @@ const getProduct = () => {
                 storeRegion: location.href.match('.(\\uk|\de|\it|\fr|\es)')[1].toUpperCase(),
                 url: location.href,
                 title: parseXPath("//span[@id='productTitle']").innerText,
-                price: parseXPath(
+                price: numToDecimal(parseXPath(
                     "//div[@class='a-section']/span[@id='price_inside_buybox']" +
                     "|//span[@class='inlineBlock-display']/span" +
-                    "|//span[@id='priceblock_ourprice']" +
                     "|//span[@id='priceblock_dealprice']" +
-                    "|//span[@id='priceblock_saleprice']"
-                ).innerText
+                    "|//span[@id='priceblock_saleprice']" +
+                    "|//span[@id='priceblock_ourprice']"
+                    // strip all non-alphanumeric characters from price
+                ).innerText.replace(/\D/g,''),2)
             }
         } else {
             return null
