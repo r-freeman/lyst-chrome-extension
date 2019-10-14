@@ -13,13 +13,8 @@ const background = () => {
     }, {url: [{urlMatches: amazonUrl}]})
 
     chrome.runtime.onInstalled.addListener(() => {
-        // When the extension is first installed, display the intro page explaining what it does
-        if (!window.localStorage.getItem('displayedIntro')) {
-            window.localStorage.setItem('displayedIntro', 'yes');
-            chrome.tabs.create({
-                url: 'intro.html'
-            });
-        }
+        // We'll check this value later and display an intro page
+        chrome.storage.local.set({hasSeenIntro: false})
     });
 }
 

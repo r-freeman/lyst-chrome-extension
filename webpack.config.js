@@ -58,10 +58,10 @@ module.exports = {
             filename: 'popup.html',
             chunks: ['popup']
         }),
-        HtmlPlugin({
-            template: 'public/intro.html',
-            filename: 'intro.html'
-        }),
+        // HtmlPlugin({
+        //     template: 'public/intro.html',
+        //     filename: 'intro.html'
+        // }),
         new CopyWebpackPlugin([
             {from: 'public/manifest.json'}
         ])
