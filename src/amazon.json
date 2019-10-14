@@ -1,0 +1,6 @@
+{
+    "productAsinId": "(//input[@id='ASIN']/@value)[1]",
+    "productTitle": "//span[@id='productTitle']",
+    "productImage": "//div[@class='imgTagWrapper']/img/@src",
+    "productPrice": "//div[@class='a-section']/span[@id='price_inside_buybox']|//span[@class='inlineBlock-display']/span|//span[@id='priceblock_dealprice']|//span[@id='priceblock_ourprice']|//span[@id='priceblock_saleprice']"
+}
