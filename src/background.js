@@ -9,6 +9,8 @@ const background = () => {
     chrome.webNavigation.onCompleted.addListener(() => {
         chrome.tabs.executeScript({
             file: './static/js/content.js'
+        }, () => {
+            console.log(chrome.runtime.lastError)
         })
     }, {url: [{urlMatches: amazonUrl}]})
 
