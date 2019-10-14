@@ -63,7 +63,8 @@ module.exports = {
         //     filename: 'intro.html'
         // }),
         new CopyWebpackPlugin([
-            {from: 'public/manifest.json'}
+            {from: 'public/manifest.json'},
+            {from: 'public/favicon.ico'}
         ])
     ]
 };
