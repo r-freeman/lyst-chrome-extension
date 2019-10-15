@@ -31,6 +31,7 @@ const HtmlPlugin = ({template, inject, filename, chunks}) => {
 module.exports = {
     entry: {
         background: './src/background.js',
+        backgroundTabs: './src/backgroundTabs.js',
         popup: './src/popup.js',
         content: './src/content.js'
     },
@@ -64,7 +65,8 @@ module.exports = {
         // }),
         new CopyWebpackPlugin([
             {from: 'public/manifest.json'},
-            {from: 'public/favicon.ico'}
+            {from: 'public/favicon.ico'},
+            {from: 'public/icons', to: 'static/icons'}
         ])
     ]
 };
