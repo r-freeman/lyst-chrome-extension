@@ -19,16 +19,18 @@ const getProduct = () => {
         if (product.asinId !== null && product.price.innerText.indexOf('-') === -1) {
             // strip all non-alphanumeric characters from price and convert integer to decimal
             product.price = numToDecimal(product.price.innerText.replace(/\D/g, ''), 2)
-            // add more details to the product
-            product.storeRegion = location.href.match('.(\\uk|\de|\it|\fr|\es)')[1].toUpperCase()
+            // get the two letter country code of the Amazon store from the url
+            product.storeRegion = location.href.match(amazon.storeUrl)[1]
+                .replace('co.', '')
+                .toUpperCase()
+
             product.url = location.href
-            product.title =  parseXPath(amazon.productTitle).innerText
+            product.title = parseXPath(amazon.productTitle).innerText
             product.image = parseXPath(amazon.productImage).value
 
             return product
-        } else {
-            return null
         }
+        return null
     } catch (e) {
         // Something went wrong return null
         return null
