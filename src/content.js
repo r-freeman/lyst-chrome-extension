@@ -7,7 +7,7 @@ let product = null
  * Get product from the DOM
  * @returns {null|{product: *, price: *, title: *, storeRegion: *, url: *}}
  */
-const getProduct = () => {w
+const getProduct = () => {
     try {
         // look for an asinId and price on the page
         product = {
