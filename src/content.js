@@ -1,40 +1,28 @@
-import {parseXPath} from "./utils/xpath";
-import {numToDecimal} from './utils/numbers'
-import * as amazon from './amazon'
+import {productHelper} from "./producthelper";
 
+// initialise the product variable
 let product = null
+
 /**
  * Get product from the DOM
  * @returns {null|{product: *, price: *, title: *, storeRegion: *, url: *}}
  */
 const getProduct = () => {
-    try {
-        // look for an asinId and price on the page
-        product = {
-            asinId: parseXPath(amazon.productAsinId).value,
-            price: parseXPath(amazon.productPrice)
-        }
+    // get the product id and price
+    product = {asinId: productHelper.asinId(), price: productHelper.price()}
 
-        // check if asinId is not null and price is valid
-        if (product.asinId !== null && product.price.innerText.indexOf('-') === -1) {
-            // strip all non-alphanumeric characters from price and convert integer to decimal
-            product.price = numToDecimal(product.price.innerText.replace(/\D/g, ''), 2)
-            // get the two letter country code of the Amazon store from the url
-            product.storeRegion = location.href.match(amazon.storeUrl)[1]
-                .replace('co.', '')
-                .toUpperCase()
+    // check if the product id and price are not null
+    if (product.asinId !== null && product.price !== null) {
+        // get the rest of the product details
+        product.storeRegion = productHelper.storeRegion()
+        product.url = location.href
+        product.title = productHelper.title()
+        product.image = productHelper.image()
 
-            product.url = location.href
-            product.title = parseXPath(amazon.productTitle).innerText
-            product.image = parseXPath(amazon.productImage).value
-
-            return product
-        }
-        return null
-    } catch (e) {
-        // Something went wrong return null
-        return null
+        return product
     }
+
+    return null
 }
 
 /**
@@ -45,15 +33,17 @@ const storeProduct = (product = getProduct()) => {
     chrome.storage.local.set({product: product})
 }
 
+// get the get and store the product once
 storeProduct()
 
+// if product is still null we aren't on a product page
 if (product !== null) {
     // Use MutationObserver to watch for changes in the DOM
     // For example, the DOM is changed when the user selects a different version of an item
     // https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver
     const observerCallback = () => {
         // check if we have the same product, if not get new product
-        let newAsinId = parseXPath(amazon.productAsinId).value
+        let newAsinId = productHelper.asinId()
         if (newAsinId !== product.asinId) {
             storeProduct()
         }

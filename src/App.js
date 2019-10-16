@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import Product from "./components/Product";
 
 class App extends Component {
@@ -16,11 +16,10 @@ class App extends Component {
         let {product} = this.state
         return (
             <div className='app-container'>
-                {product ? (
-                    <Product product={product}/>
-                ) : (
-                    <h3>No product</h3>
-                )}
+                {product
+                    ? (<Product product={product}/>)
+                    : (<h3>No product</h3>)
+                }
             </div>
         )
     }
