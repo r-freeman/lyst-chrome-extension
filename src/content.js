@@ -7,7 +7,7 @@ let product = null
  * Get product from the DOM
  * @returns {null|{product: *, price: *, title: *, storeRegion: *, url: *}}
  */
-const getProduct = () => {
+const getProduct = () => {w
     try {
         // look for an asinId and price on the page
         product = {
@@ -52,13 +52,16 @@ if (product !== null) {
     // For example, the DOM is changed when the user selects a different version of an item
     // https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver
     const observerCallback = () => {
-        // store product again if change was found
-        storeProduct()
+        // check if we have the same product, if not get new product
+        let newAsinId = parseXPath(amazon.productAsinId).value
+        if (newAsinId !== product.asinId) {
+            storeProduct()
+        }
     }
 
     const observer = new MutationObserver(observerCallback);
     observer.observe(
-        // Observe the child nodes in title_feature_div for changes
+        // Observe the child nodes in centerCol for changes
         document.getElementById('centerCol'), {
             childList: true,
             subtree: true
