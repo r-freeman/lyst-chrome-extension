@@ -30,7 +30,8 @@ export const productHelper = {
     title: (title = parseXPath(amazon.productTitle)) => {
         // get the product title
         if (title !== null && "innerText" in title) {
-            return title.innerText
+            // remove leading and trailing white space from title
+            return title.innerText.trim()
         } else {
             return null
         }

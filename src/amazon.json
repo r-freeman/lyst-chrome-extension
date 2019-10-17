@@ -1,7 +1,7 @@
 {
-    "productAsinId": "(//input[@id='ASIN']/@value)[1]",
-    "productTitle": "//span[@id='productTitle']",
-    "productImage": "(//div[@class='imgTagWrapper']/img/@src)[1]|//div[@id='img-wrapper']//img/@src",
-    "productPrice": "//div[@class='a-section']/span[@id='price_inside_buybox']|//span[@class='inlineBlock-display']/span|//span[@id='priceblock_dealprice']|//span[@id='priceblock_ourprice']|//span[@id='priceblock_saleprice']|//div[@id='unqualifiedBuyBox']//span[@class='a-color-price']",
+    "productAsinId": "(//input[@id='ASIN']/@value)[1]|//div[@class='a-hidden']/@data-asin|(//input[@name='ASIN.0']/@value)[1]",
+    "productTitle": "//span[@id='productTitle']|//h1/span[@id='ebooksProductTitle']",
+    "productImage": "(//div[@class='imgTagWrapper']/img/@src)[1]|//div[@id='img-wrapper']//img/@src|//div[@id='ebooks-img-canvas']/img/@src",
+    "productPrice": "//div[@class='a-section']/span[@id='price_inside_buybox']|//span[@class='inlineBlock-display']/span|//span[@id='priceblock_dealprice']|//span[@id='priceblock_ourprice']|//span[@id='priceblock_saleprice']|//div[@id='unqualifiedBuyBox']//span[@class='a-color-price']|//tr[@class='kindle-price']//span",
     "storeUrl": ".amazon.(co.uk|de|it|fr|es)"
 }
