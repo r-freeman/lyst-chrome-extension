@@ -8,21 +8,25 @@ let product = null
  * @returns {null|{product: *, price: *, title: *, storeRegion: *, url: *}}
  */
 const getProduct = () => {
-    // get the product id and price
-    product = {asinId: productHelper.asinId(), price: productHelper.price()}
+    try {
+        // get the product id and price
+        product = {asinId: productHelper.asinId(), price: productHelper.price()}
 
-    // check if the product id and price are not null
-    if (product.asinId !== null && product.price !== null) {
-        // get the rest of the product details
-        product.storeRegion = productHelper.storeRegion()
-        product.url = location.href
-        product.title = productHelper.title()
-        product.image = productHelper.image()
-
-        return product
+        // check if the product id and price are not null
+        if (product.asinId !== null && product.price !== null) {
+            // get the rest of the product details
+            product.storeRegion = productHelper.storeRegion()
+            product.url = location.href
+            product.title = productHelper.title()
+            product.image = productHelper.image()
+        } else {
+            product = null
+        }
+    } catch (e) {
+        return null
     }
 
-    return null
+    return product
 }
 
 /**

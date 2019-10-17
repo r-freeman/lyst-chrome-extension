@@ -9,12 +9,15 @@ import * as amazon from './amazon'
 export const productHelper = {
     asinId: (asinId = parseXPath(amazon.productAsinId)) => {
         // get the product id
-        return "value" in asinId ? asinId.value : null
+        if (asinId !== null && "value" in asinId) {
+            return asinId.value
+        } else {
+            return null
+        }
     },
     price: (price = parseXPath(amazon.productPrice)) => {
         // check if price is valid
-        if ("innerText" in price && price.innerText.indexOf('-') === -1) {
-            // strip all non-alphanumeric characters from price and convert to decimal form
+        if (price !== null && "innerText" in price && price.innerText.indexOf('-') === -1) {
             return numToDecimal(price.innerText.replace(/\D/g, ''), 2)
         } else {
             return null
@@ -26,10 +29,18 @@ export const productHelper = {
     },
     title: (title = parseXPath(amazon.productTitle)) => {
         // get the product title
-        return "innerText" in title ? title.innerText : null
+        if (title !== null && "innerText" in title) {
+            return title.innerText
+        } else {
+            return null
+        }
     },
     image: (image = parseXPath(amazon.productImage)) => {
         // get the product image
-        return "value" in image ? image.value : null
+        if (image !== null && "value" in image) {
+            return image.value
+        } else {
+            return null
+        }
     }
 }
