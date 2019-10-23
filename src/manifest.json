@@ -1,0 +1,33 @@
+{
+  "name": "Lyst",
+  "description": "",
+  "version": "1.0",
+  "manifest_version": 2,
+  "icons": {
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "browser_action": {
+    "default_icon": {
+      "16": "icons/default_icon16.png",
+      "32": "icons/default_icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    },
+    "default_popup": "popup/popup.html"
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ],
+    "persistent": false
+  },
+  "permissions": [
+    "http://*/*",
+    "https://*/*",
+    "activeTab",
+    "declarativeContent",
+    "storage",
+    "webNavigation"
+  ]
+}
