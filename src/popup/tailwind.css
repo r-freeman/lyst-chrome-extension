@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body {
+    width: 360px;
+    height: 600px;
+    margin: auto;
+}
+
+.overflow-content {
+    height: 365px;
+}
