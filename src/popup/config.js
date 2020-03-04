@@ -1,0 +1,1 @@
+export const BASE_URL = 'http://lyst-api.loc/api/v1/';

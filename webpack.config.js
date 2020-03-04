@@ -5,6 +5,9 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const {VueLoaderPlugin} = require('vue-loader');
 
 const config = {
+    node: {
+        fs: 'empty'
+    },
     devServer: {
         publicPath: '/',
         contentBase: './src/popup',

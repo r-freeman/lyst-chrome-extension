@@ -5,10 +5,10 @@ module.exports = {
         },
         extend: {
             fontFamily: {
-              sans: ['Nunito']
+                sans: ['Nunito']
             },
             boxShadow: {
-              b: ' 0 6px 2px -2px rgba(0, 0, 0, .04)'
+                b: ' 0 6px 2px -2px rgba(0, 0, 0, .04)'
             },
             colors: {
                 safetyorange: '#ff9900',
@@ -22,5 +22,11 @@ module.exports = {
         }
     },
     variants: {},
-    plugins: []
-}
+    plugins: [
+        require('tailwindcss-animatecss')({
+            settings: {
+                animatedSpeed: 1000
+            }
+        })
+    ]
+};

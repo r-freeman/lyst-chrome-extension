@@ -1,10 +1,23 @@
-import Vue from 'vue';
-import App from './App';
-import router from './router';
+import Vue from "vue";
+import VueRouter from "vue-router";
+import App from "./App";
+import router from "./router";
+import store from "./store";
+import "./vee-validate";
+import "./tailwind.css";
+import "typeface-nunito";
 
-/* eslint-disable no-new */
+const VueTruncate = require("vue-truncate-filter");
+
+// Set Vue router
+Vue.router = router;
+
+// plugins
+Vue.use(VueRouter);
+Vue.use(VueTruncate);
+
 new Vue({
-  el: '#app',
-  router,
-  render: h => h(App),
-});
+    store,
+    router,
+    render: h => h(App),
+}).$mount('#app');

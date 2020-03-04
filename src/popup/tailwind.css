@@ -9,5 +9,17 @@ html, body {
 }
 
 .overflow-content {
-    height: 365px;
+    height: 390px;
+}
+
+.error {
+    @apply border-red-500 !important
+}
+
+.valid {
+    @apply border-mantis !important;
+}
+
+.enabled {
+    @apply bg-mantis !important;
 }

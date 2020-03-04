@@ -6,7 +6,7 @@
 
 <script>
     export default {
-        name: "Cross.vue"
+        name: "Cross"
     }
 </script>
 
