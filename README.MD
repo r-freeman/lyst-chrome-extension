@@ -66,3 +66,11 @@ To create a production build of the application.
 ```
 yarn build
 ```
+
+## Install in Google Chrome
+
+The browser extension is not distributed in the [Chrome Web Store](https://chrome.google.com/webstore/category/extensions?). Instead, generate a production build as above. The build will be compiled into the ./build directory. Next, go into Settings > More Tools > Extensions in Google Chrome.
+
+![load unpacked](https://developer.chrome.com/static/images/get_started/load_extension.png)
+
+Enable Developer mode, choose load unpacked and select the build directory. The extension should now be installed in the browser.
