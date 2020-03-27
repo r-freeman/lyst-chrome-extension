@@ -1,16 +1,20 @@
 {
   "name": "Lyst",
-  "version": "1.0.0",
+  "version": "0.1",
   "description": "",
   "license": "MIT",
   "scripts": {
-    "build": "NODE_ENV=production webpack --hide-modules",
-    "start": "webpack-dev-server --mode development"
+    "start": "webpack-dev-server --mode development",
+    "build": "npm run pack && npm run remove-evals && npm run zip",
+    "pack": "webpack --mode=production --env.NODE_ENV=production --progress --hide-modules",
+    "remove-evals": "node scripts/remove-evals.js",
+    "zip": "node scripts/build-zip.js"
   },
   "husky": {
     "hooks": {}
   },
   "dependencies": {
+    "archiver": "^3.1.1",
     "axios": "^0.19.0",
     "cheerio": "^1.0.0-rc.3",
     "json-cookie": "^1.0.0",
