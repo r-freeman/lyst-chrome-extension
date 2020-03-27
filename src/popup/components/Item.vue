@@ -41,14 +41,17 @@
         },
         methods: {
             editItem() {
+                // emit the edit-item event up to the Items view
                 this.$emit('edit-item');
             }
         },
         computed: {
             itemStore() {
+                // computes the store name from name and region attributes
                 return this.$props.item.store.name + ' ' + this.$props.item.store.region
             },
             listName() {
+                // returns the list name that the item belongs to
                 if ('lists' in this.$props.item) {
                     return this.$props.item.lists[0].name;
                 } else {

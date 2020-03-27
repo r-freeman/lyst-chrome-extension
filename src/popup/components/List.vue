@@ -20,6 +20,7 @@
         name: "List",
         props: ['list'],
         computed: {
+            // returns how many items are in the list
             itemCount() {
                 return this.$props.list.items.length
             }
