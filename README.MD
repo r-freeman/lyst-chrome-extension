@@ -69,8 +69,8 @@ yarn build
 
 ## Install in Google Chrome
 
-The browser extension is not distributed in the [Chrome Web Store](https://chrome.google.com/webstore/category/extensions?). Instead, generate a production build as above. The build will be compiled into the ./build directory. Next, go into Settings > More Tools > Extensions in Google Chrome.
+The browser extension is not distributed in the [Chrome Web Store](https://chrome.google.com/webstore/category/extensions?). Instead, generate a production build as above. The build will be compiled into ./dist and zipped version in ./dist-zip. Next, go into Settings > More Tools > Extensions in Google Chrome.
 
 ![load unpacked](https://developer.chrome.com/static/images/get_started/load_extension.png)
 
-Enable Developer mode, choose load unpacked and select the build directory. The extension should now be installed in the browser.
+Enable Developer mode, choose load unpacked and select the dist directory. The extension should now be installed in the browser.
