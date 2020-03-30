@@ -1,12 +1,20 @@
 import axios from "axios";
 import router from "../router";
-import {BASE_URL} from "../config";
+
+let baseUrl,
+    env = process.env.NODE_ENV;
+
+if (env === 'development') {
+    baseUrl = 'http://lyst.loc/api/v1/';
+} else if (env === 'production') {
+    baseUrl = 'http://joinlyst.com/api/v1/';
+}
 
 const UNAUTHORISED = 401;
 
 // create an instance of axios
 export const api = axios.create({
-    baseURL: BASE_URL,
+    baseURL: baseUrl,
     headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
